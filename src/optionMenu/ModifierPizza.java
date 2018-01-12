@@ -1,7 +1,10 @@
 package optionMenu;
 
+import static view.mainPizza.CONSOLE;
+
 import java.util.Scanner;
 
+import admin.CategoriePizza;
 import admin.Pizza;
 import dao.IPizzaDao;
 
@@ -12,6 +15,9 @@ public class ModifierPizza extends OptionMenu {
 	String nom;
 	double prix;
 	String codepizz;
+	CategoriePizza cat;
+	int choixcat;
+	
 
 	public ModifierPizza(IPizzaDao dao, Scanner scan) {
 		super(dao, scan);
@@ -20,23 +26,49 @@ public class ModifierPizza extends OptionMenu {
 
 	public void execute() {
 
-		System.out.println("\n***************Choisissez une pizza par son code********************************* \n");
+		CONSOLE.info("\n***************Choisissez une pizza par son code********************************* \n");
 		codepizz = scan.next();
 		if (dao.verifPizzaExiste(codepizz) == true) {
 
-			System.out.println("\n***************Nouveau Code********************************* \n");
+			CONSOLE.info("\n***************Nouveau Code********************************* \n");
 
 			code = scan.next();
 
-			System.out.println("\n***************Nouveau Nom********************************* \n");
+			CONSOLE.info("\n***************Nouveau Nom********************************* \n");
 
 			nom = scan.next();
 
-			System.out.println("\n***************Nouveau Prix********************************* \n");
+			CONSOLE.info("\n***************Nouveau Prix********************************* \n");
 
 			prix = scan.nextDouble();
 
-			dao.updatePizza(codepizz, new Pizza(code, nom, prix));
+			CONSOLE.info("\n***************Choisissez une categorie********************************* \n");
+			CONSOLE.info("\n1->VIANDE"
+					+ "\n2->POISSON"
+					+"\n3->SANS VIANDE");
+			
+			choixcat= scan.nextInt();
+			if(choixcat==1)
+			{
+				
+				cat=CategoriePizza.VIANDE;
+				dao.updatePizza(codepizz, new Pizza(code, nom, prix, cat));
+			}
+			if(choixcat==2)
+			{
+				cat=CategoriePizza.POISSON;
+				dao.updatePizza(codepizz, new Pizza(code, nom, prix, cat));
+			}
+			
+			if(choixcat==3)
+			{
+				cat=CategoriePizza.SANS_VIANDE;
+				dao.updatePizza(codepizz, new Pizza(code, nom, prix, cat));
+			}
+			
+			
+
+		
 		}
 	}
 }

@@ -1,19 +1,20 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import admin.Pizza;
 
 public interface IPizzaDao {
 
-	boolean verifPizzaExiste(String code);
+	public boolean verifPizzaExiste(String code);
 
 	public List<Pizza> findAllPizzas();
 
-	void saveNewPizza(Pizza pizza);
+	public void saveNewPizza(Pizza pizza);
 
-	boolean supprimerPizza(String pizzSupr);
+	public boolean supprimerPizza(String pizzSupr);
 
-	boolean updatePizza(String codePizza, Pizza pizza);
+	public boolean updatePizza(String codePizza, Pizza pizza);
 
 }

@@ -1,24 +1,32 @@
 package dao;
 
+import static view.mainPizza.CONSOLE;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
 
+import admin.CategoriePizza;
 import admin.Pizza;
 
 public class Dao implements IPizzaDao {
 
-	private List<Pizza> p = new ArrayList<Pizza>();
+	protected List<Pizza> p = new ArrayList<Pizza>();
 
 	public Dao() {
 
-		p.add(new Pizza("PEP", "Pépéroni", 12.50));
-		p.add(new Pizza("MAR", "Margherita", 14.00));
-		p.add(new Pizza("REIN", "Reine", 14.00));
-		p.add(new Pizza("FRO", "La 4 fromages", 12.00));
-		p.add(new Pizza("CAN", "La cannibale", 12.50));
-		p.add(new Pizza("SAV", "La savoyarde", 13.00));
-		p.add(new Pizza("ORI", "L’orientale", 13.50));
+		p.add(new Pizza("PEP", "Pépéroni", 12.50, CategoriePizza.VIANDE));
+		p.add(new Pizza("MAR", "Margherita", 14.00,CategoriePizza.SANS_VIANDE));
+		p.add(new Pizza("REIN", "Reine", 14.00,CategoriePizza.SANS_VIANDE ));
+		p.add(new Pizza("FRO", "La 4 fromages", 12.00,CategoriePizza.SANS_VIANDE ));
+		p.add(new Pizza("CAN", "La cannibale", 12.50, CategoriePizza.VIANDE ));
+		p.add(new Pizza("SAV", "La savoyarde", 13.00, CategoriePizza.SANS_VIANDE));
+		p.add(new Pizza("ORI", "L’orientale", 13.50, CategoriePizza.POISSON));
 
 	}
 
@@ -40,7 +48,7 @@ public class Dao implements IPizzaDao {
 
 			if ((p != null) && (p.get(i).getCode().equals(code))) {
 
-				System.out.println("Vous avez choisi: " + code + "\npizza: " + p.get(i).getNom());
+				CONSOLE.info("Vous avez choisi: " + code + "\npizza: " + p.get(i).getNom());
 
 				existe = true;
 
@@ -75,11 +83,12 @@ public class Dao implements IPizzaDao {
 
 			if (p.get(i) == null) {
 				p.set(i, pizza);
-				break;
+				
+
 			}
+			 
 		}
-		// System.out.println(pizza.getId() + " " + pizza.getCode() + " " +
-		// p[i].getNom() + " " + p[i].getPrix());
+	
 
 	}
 
@@ -89,12 +98,12 @@ public class Dao implements IPizzaDao {
 	 * @see dao.IPizzaDao#supprimerPizza(java.lang.String)
 	 */
 	@Override
-	public boolean supprimerPizza(String pizzSupr) {
+	public boolean supprimerPizza(String pizzSupr)  {
 		boolean existe;
 		existe = true;
 		int i;
 		if (verifPizzaExiste(pizzSupr) == true) {
-			System.out.println("la pizza " + pizzSupr + " a été supprimé");
+			CONSOLE.info("la pizza " + pizzSupr + " a été supprimé");
 			for (i = 0; i < p.size(); i++) {
 
 				if ((p.get(i) != null) && (p.get(i).getCode().equals(pizzSupr)) && (p != null)) {
@@ -105,7 +114,7 @@ public class Dao implements IPizzaDao {
 				}
 			}
 		} else {
-			System.out.println("la pizza n'existe malheureusement pas rien ne seras supprimé");
+			CONSOLE.info("la pizza n'existe malheureusement pas rien ne seras supprimé");
 			existe = false;
 
 		}
@@ -136,5 +145,7 @@ public class Dao implements IPizzaDao {
 
 		return existe;
 	}
+	
+
 
 }

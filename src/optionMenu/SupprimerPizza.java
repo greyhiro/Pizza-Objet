@@ -1,5 +1,7 @@
 package optionMenu;
 
+import static view.mainPizza.CONSOLE;
+
 import java.util.Scanner;
 
 import dao.IPizzaDao;
@@ -14,7 +16,7 @@ public class SupprimerPizza extends OptionMenu {
 	public void execute() {
 
 		String pizzSupr;
-		System.out.println(
+		CONSOLE.info(
 				"\n***************choisissez une pizza a supprimer par son code********************************* \n");
 
 		pizzSupr = scan.next();
