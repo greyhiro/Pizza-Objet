@@ -1,6 +1,6 @@
 package dao;
 
-import static view.mainPizza.CONSOLE;
+import static view.MainPizza.CONSOLE;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -26,20 +26,19 @@ public class DaoBDD implements IPizzaDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection connection = DriverManager.getConnection("jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false","uhnbfmjrvzio9n4v"
-					, "OOAmlvegpmPAqLlFMb7");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false",
+					"uhnbfmjrvzio9n4v", "OOAmlvegpmPAqLlFMb7");
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM pizzas");
 
 			while (result.next()) {
-				
-				String code1 = result.getString("code");
-				
 
-				if (code.equals(code1))
-				{
-					System.out.println("elle existe !");
-			return true;
+				String code1 = result.getString("code");
+
+				if (code.equals(code1)) {
+					CONSOLE.info("elle existe !");
+					return true;
 				}
 			}
 
@@ -49,11 +48,10 @@ public class DaoBDD implements IPizzaDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez s'en une autre");
+		CONSOLE.info(code + "n'existe malheureuesment pas dans la BDD \nChoisissez s'en une autre");
 		return false;
-	
-	}
 
+	}
 
 	@Test
 	public List<Pizza> findAllPizzas() {
@@ -61,8 +59,9 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection connection = DriverManager.getConnection("jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false","uhnbfmjrvzio9n4v"
-					, "OOAmlvegpmPAqLlFMb7");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false",
+					"uhnbfmjrvzio9n4v", "OOAmlvegpmPAqLlFMb7");
 			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery("SELECT * FROM pizzas");
 
@@ -96,17 +95,18 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection connection = DriverManager.getConnection("jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false","uhnbfmjrvzio9n4v"
-					, "OOAmlvegpmPAqLlFMb7");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false",
+					"uhnbfmjrvzio9n4v", "OOAmlvegpmPAqLlFMb7");
 
-			
 			String code = pizza.getCode();
 			String nom = pizza.getNom();
 			double prix = pizza.getPrix();
 			CategoriePizza cate = pizza.getCat();
 
-			PreparedStatement addPizza = connection.prepareStatement("INSERT INTO pizzas(code, nom,prix,cat) Values (?, ?, ?, ?)");
-			
+			PreparedStatement addPizza = connection
+					.prepareStatement("INSERT INTO pizzas(code,nom,prix,cat) Values (?, ?, ?, ?)");
+
 			addPizza.setString(1, code);
 			addPizza.setString(2, nom);
 			addPizza.setDouble(3, prix);
@@ -128,16 +128,16 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection connection = DriverManager.getConnection("jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false","uhnbfmjrvzio9n4v"
-					, "OOAmlvegpmPAqLlFMb7");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false",
+					"uhnbfmjrvzio9n4v", "OOAmlvegpmPAqLlFMb7");
 
 			PreparedStatement suprPizza = connection.prepareStatement("DELETE FROM pizzas WHERE code LIKE ?");
 
 			suprPizza.setString(1, pizzSupr);
 			suprPizza.executeUpdate();
 			suprPizza.close();
-			
-			
+
 			return true;
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -145,7 +145,7 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 			e.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Test
@@ -155,10 +155,10 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection connection = DriverManager.getConnection("jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false","uhnbfmjrvzio9n4v"
-					, "OOAmlvegpmPAqLlFMb7");
+			Connection connection = DriverManager.getConnection(
+					"jdbc:mysql://bl0ljffzh-mysql.services.clever-cloud.com:3306/bl0ljffzh?useSSL=false",
+					"uhnbfmjrvzio9n4v", "OOAmlvegpmPAqLlFMb7");
 
-			int id = pizza.getId();
 			String code = pizza.getCode();
 			String nom = pizza.getNom();
 			double prix = pizza.getPrix();
@@ -166,7 +166,7 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 
 			PreparedStatement updatePizzaSt = connection
 					.prepareStatement("UPDATE pizzas SET code=?, nom=?,prix=?, cat=? WHERE code LIKE ?");
-			
+
 			updatePizzaSt.setString(1, code);
 			updatePizzaSt.setString(2, nom);
 			updatePizzaSt.setDouble(3, prix);
@@ -183,8 +183,5 @@ System.out.println(code +"n'existe malheureuesment pas dans la BDD \nChoisissez 
 		}
 
 	}
-
-
-
 
 }

@@ -1,9 +1,10 @@
 package admin;
 
-import static view.mainPizza.CONSOLE;
+import static view.MainPizza.CONSOLE;
 
 import java.util.Scanner;
 
+import dao.DaoJPA;
 import dao.IPizzaDao;
 import exeption.SavePizzaExeption;
 import optionMenu.*;
@@ -46,6 +47,7 @@ public class Menu {
 
 		case 99:
 			System.out.println("Au revoir !");
+		
 		}
 
 	}

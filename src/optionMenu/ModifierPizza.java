@@ -1,6 +1,6 @@
 package optionMenu;
 
-import static view.mainPizza.CONSOLE;
+import static view.MainPizza.CONSOLE;
 
 import java.util.Scanner;
 

@@ -1,5 +1,6 @@
 package optionMenu;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,10 +20,14 @@ public class ListerPizza extends OptionMenu {
 		int i;
 		List<Pizza> p = dao.findAllPizzas() ;
 
+		
 		for (i = 0; i < p.size(); i++) {
 			if (p.get(i) != null) {
+				
+				
 				System.out.println(p.get(i).getId() + " " + p.get(i).getCode() + " " + p.get(i).getNom() + " "
-						+ p.get(i).getPrix()+ " "+p.get(i).getCat());
+						+(p.get(i).getPrix())+ " "+p.get(i).getCat());
+				
 			}
 		}
 
