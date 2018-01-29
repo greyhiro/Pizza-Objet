@@ -109,7 +109,7 @@ public class DaoJPA implements IPizzaDao {
 
 		return false;
 
-	}
+}
 
 	/**
 	 * Modifie la pizza en base
@@ -122,12 +122,21 @@ public class DaoJPA implements IPizzaDao {
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 
-		if (verifPizzaExiste(codePizza) == true) {
-			em.persist(pizza);
-			et.commit();
-			em.close();
 
-			return true;
+		TypedQuery<Pizza> query = em.createQuery("FROM Pizza", Pizza.class);
+		for (int i = 0; i < query.getResultList().size(); i++) {
+			Pizza piz = (Pizza) query.getResultList().get(i);
+
+
+			if (verifPizzaExiste(codePizza) == true) {
+
+				
+				em.remove(piz);
+				em.persist(pizza);
+				et.commit();
+				em.close();
+				return true;
+			}
 
 		}
 
