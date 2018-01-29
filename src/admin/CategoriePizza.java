@@ -1,6 +1,9 @@
 package admin;
 
-
+/**
+ Enum pour definir à quel categorie appartiens la pizza
+ 
+  */
 	public enum CategoriePizza {
 
 		VIANDE("Viande"), POISSON("Poisson"), SANS_VIANDE("Sans Viande");

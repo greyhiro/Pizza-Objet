@@ -13,11 +13,21 @@ public class Menu {
 
 	int choix;
 
+	/**
+	 * classe de finissant les choix qui vont être effectué sur le menu
+	 */
 	public Menu() {
 
 		super();
 
 	}
+	
+	/**
+	 * 
+	 * @param choix int chiffre entrée en console afin de deffinir l'action que l'on veut effectuer sur le programme
+	 * @param dao classe dao recupere la liste de pizza et la traite
+	 * @param scan scanner java pour ecouter les choix de l'utilisateur
+	 */
 
 	public void choixMenu(int choix, IPizzaDao dao, Scanner scan) {
 
@@ -51,6 +61,11 @@ public class Menu {
 		}
 
 	}
+	/**
+	 * affichage du menu
+	 * @param scan
+	 * @return
+	 */
 
 	public int defchoix(Scanner scan) {
 

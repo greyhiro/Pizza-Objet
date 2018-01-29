@@ -24,6 +24,10 @@ public class ModifierPizza extends OptionMenu {
 
 	}
 
+	/**
+	 * Communication avec l'utilisateur qui veut modifier une pizza
+	 * + def de la categorie
+	 */
 	public void execute() {
 
 		CONSOLE.info("\n***************Choisissez une pizza par son code********************************* \n");

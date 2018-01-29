@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 import dao.IPizzaDao;
 
+
+/**
+ * Communication avec l'utilisateur qui veut supprimer une pizza
+ * 
+ */
 public class SupprimerPizza extends OptionMenu {
 
 	public SupprimerPizza(IPizzaDao dao, Scanner scan) {

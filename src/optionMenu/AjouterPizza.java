@@ -15,6 +15,10 @@ public class AjouterPizza extends OptionMenu {
 		super(dao, scan);
 	}
 
+	/**
+	 * Communication avec l'utilisateur qui veut instancier une nouvelle pizza
+	 * + def de la categorie
+	 */
 	public void execute() throws SavePizzaExeption {
 
 

@@ -13,10 +13,13 @@ import dao.IPizzaDao;
 
 public class MainPizza {
 
+	/**
+	 * classe qui execute le programme
+	 */
 	public static final Logger CONSOLE = LoggerFactory.getLogger("dev.service");
 
 	public static void main(String[] args) {
-		
+	
 		
 
 		CONSOLE.info("Bienvenue a la pizzeria");

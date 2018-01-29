@@ -8,7 +8,10 @@ import admin.Pizza;
 import dao.IPizzaDao;
 
 public class ListerPizza extends OptionMenu {
-
+	/**
+	 * Communication avec l'utilisateur qui veut afficher une nouvelle pizza
+	 * + affichage
+	 */
 	public ListerPizza(IPizzaDao dao, Scanner scan) {
 
 		super(dao, scan);

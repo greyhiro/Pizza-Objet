@@ -21,8 +21,9 @@ public class DaoBDD implements IPizzaDao {
 
 	public boolean verifPizzaExiste(String code) {
 
-		// boucle qui parcours le tableau de Pizza
-
+		/**
+		 * boucle qui parcours le tableau de Pizza
+		 */
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
@@ -53,6 +54,9 @@ public class DaoBDD implements IPizzaDao {
 
 	}
 
+	/**
+	 * recupere tout les pizza contenue dans la liste de pizzas
+	 */
 	@Test
 	public List<Pizza> findAllPizzas() {
 		List<Pizza> pizza = new ArrayList<>();
@@ -89,6 +93,9 @@ public class DaoBDD implements IPizzaDao {
 		return pizza;
 	}
 
+	/**
+	 * enregistre une nouvelle pizza a la liste de pizza
+	 */
 	@Test
 	public void saveNewPizza(Pizza pizza) {
 
@@ -120,6 +127,10 @@ public class DaoBDD implements IPizzaDao {
 		}
 
 	}
+	
+	/**
+	 * supprime une pizza a la liste de pizza
+	 */
 
 	@Test
 	public boolean supprimerPizza(String pizzSupr) {
@@ -148,6 +159,9 @@ public class DaoBDD implements IPizzaDao {
 
 	}
 
+	/**
+	 * modifie une pizza a la liste de pizza
+	 */
 	@Test
 	public boolean updatePizza(String codePizza, Pizza pizza) {
 
